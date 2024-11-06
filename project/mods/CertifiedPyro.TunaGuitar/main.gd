@@ -21,9 +21,11 @@ func _init_mod(node: Node) -> void:
 	mod_menu.connect("save_menu_requested", save_as_chords_menu, "overwrite_current_preset")
 	mod_menu.connect("save_as_menu_requested", save_as_chords_menu, "open_menu")
 	
-	# This signal connection is needed so save menu knows when a preset was loaded from the load menu.
+	# These connections are needed so save menu knows when a preset was loaded, renamed, or deleted from the load menu.
 	# This allows the "Save" button to work properly.
 	load_chords_menu.connect("preset_loaded", save_as_chords_menu, "handle_external_activated_preset")
+	load_chords_menu.connect("preset_renamed", save_as_chords_menu, "_on_preset_renamed")
+	load_chords_menu.connect("preset_deleted", save_as_chords_menu, "_on_preset_deleted")
 	
 	var fret_main := node.get_node("fret_main")
 	fret_main.add_child(mod_menu)

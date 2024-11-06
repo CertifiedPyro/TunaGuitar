@@ -89,8 +89,15 @@ func _on_preset_selected(preset_name: String, saved_shapes: Array) -> void:
 	save_button.disabled = false
 
 
-func _on_preset_deselected() -> void:
-	pass
+func _on_preset_renamed(old_preset_name, new_preset_name) -> void:
+	print(old_preset_name + " " + new_preset_name + " " + last_activated_preset_name)
+	if last_activated_preset_name == old_preset_name:
+		last_activated_preset_name = new_preset_name
+
+
+func _on_preset_deleted(preset_name) -> void:
+	if last_activated_preset_name == preset_name:
+		last_activated_preset_name = ""
 
 
 func _are_shapes_equal(array1: Array, array2: Array) -> bool:

@@ -2,6 +2,8 @@ extends Control
 
 
 signal preset_loaded(preset_name, saved_shapes)
+signal preset_renamed(old_preset_name, new_preset_name)
+signal preset_deleted(preset_name)
 
 const GuitarMinigame = preload("res://Scenes/Minigames/Guitar/guitar_minigame.gd")
 const PlayerHud = preload("res://Scenes/HUD/playerhud.gd")
@@ -58,6 +60,14 @@ func _on_preset_selected(preset_name: String, saved_shapes: Array) -> void:
 
 func _on_preset_deselected() -> void:
 	load_button.disabled = true
+
+
+func _on_preset_renamed(old_preset_name, new_preset_name) -> void:
+	emit_signal("preset_renamed", old_preset_name, new_preset_name)
+
+
+func _on_preset_deleted(preset_name) -> void:
+	emit_signal("preset_deleted", preset_name)
 
 
 # Enters the menu state used by other vanilla menus (shop, etc.)

@@ -4,6 +4,8 @@ extends Control
 signal preset_activated(preset_name, saved_shapes)
 signal preset_selected(preset_name, saved_shapes)
 signal preset_deselected()
+signal preset_renamed(old_preset_name, new_preset_name)
+signal preset_deleted(preset_name)
 
 const CustomDialog = preload("res://mods/CertifiedPyro.TunaGuitar/Scenes/PresetsList/custom_dialog.gd")
 
@@ -184,6 +186,7 @@ func _handle_rename_preset_request(preset_name: String) -> void:
 	if not write_success:
 		return
 	
+	emit_signal("preset_renamed", preset_name, new_preset_name)
 	PlayerData._send_notification("Renamed preset!")
 	self.refresh_presets()
 
@@ -207,6 +210,7 @@ func _handle_delete_preset_request(preset_name: String) -> void:
 	if not write_success:
 		return
 	
+	emit_signal("preset_deleted", preset_name)
 	PlayerData._send_notification("Deleted preset from file!")
 	self.refresh_presets()
 

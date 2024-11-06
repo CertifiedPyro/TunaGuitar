@@ -105,7 +105,8 @@ text = "Save"
 
 [connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="preset_activated" from="Panel/VBoxContainer/VBoxContainer/PresetsList" to="." method="_on_preset_activated"]
-[connection signal="preset_deselected" from="Panel/VBoxContainer/VBoxContainer/PresetsList" to="." method="_on_preset_deselected"]
+[connection signal="preset_deleted" from="Panel/VBoxContainer/VBoxContainer/PresetsList" to="." method="_on_preset_deleted"]
+[connection signal="preset_renamed" from="Panel/VBoxContainer/VBoxContainer/PresetsList" to="." method="_on_preset_renamed"]
 [connection signal="preset_selected" from="Panel/VBoxContainer/VBoxContainer/PresetsList" to="." method="_on_preset_selected"]
 [connection signal="text_changed" from="Panel/VBoxContainer/SaveRow/DummyLineEdit/PresetTextInput" to="." method="_on_edit_text_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/SaveRow/SaveButton" to="." method="_on_save_button_pressed"]

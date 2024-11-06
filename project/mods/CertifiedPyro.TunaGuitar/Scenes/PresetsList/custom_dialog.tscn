@@ -1,0 +1,150 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Themes/main.tres" type="Theme" id=1]
+[ext_resource path="res://mods/CertifiedPyro.TunaGuitar/Scenes/PresetsList/custom_dialog.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Themes/button_tan_normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Themes/panel_med.tres" type="StyleBox" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.35, 0.46, 0.35, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 10.0
+
+[node name="CustomDialog" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 400, 200 )
+custom_styles/panel = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_right = 400.0
+margin_bottom = 282.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitlePanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 42.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/TitlePanelContainer"]
+margin_top = 4.0
+margin_right = 400.0
+margin_bottom = 38.0
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer/TitlePanelContainer/CenterContainer"]
+margin_left = 126.0
+margin_right = 274.0
+margin_bottom = 34.0
+size_flags_horizontal = 7
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Are you sure?"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 400.0
+margin_bottom = 282.0
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+margin_right = 400.0
+margin_bottom = 232.0
+size_flags_vertical = 3
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 384.0
+margin_bottom = 216.0
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="DialogText" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 368.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_vertical = 3
+align = 1
+valign = 1
+
+[node name="TextInputContainer" type="LineEdit" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 116.0
+margin_right = 368.0
+margin_bottom = 150.0
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="TextInput" type="LineEdit" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TextInputContainer"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+max_length = 100
+context_menu_enabled = false
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 166.0
+margin_right = 368.0
+margin_bottom = 200.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 2.0
+margin_right = 366.0
+margin_bottom = 34.0
+custom_constants/margin_right = 32
+custom_constants/margin_left = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer"]
+margin_left = 32.0
+margin_right = 332.0
+margin_bottom = 34.0
+custom_constants/separation = 100
+
+[node name="CancelButton" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 5
+text = "Nope"
+
+[node name="OkButton" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 200.0
+margin_right = 300.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 100, 0 )
+text = "Yup"
+
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TextInputContainer/TextInput" to="." method="_on_text_input_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/OkButton" to="." method="_on_ok_button_pressed"]

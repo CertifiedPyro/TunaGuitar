@@ -2,7 +2,7 @@
 
 A mod that adds QOL features for guitars!
 
-![Tuna Guitar example screenshot](https://github.com/user-attachments/assets/1568a9ee-5146-4b84-a29a-def79d66fbee)
+<img src="https://github.com/user-attachments/assets/1568a9ee-5146-4b84-a29a-def79d66fbee" width=1000>
 
 ## Current Features
 - Save named chord presets

@@ -31,6 +31,8 @@ func popup(requested_dialog_text: String, requires_input: bool = false, input_te
 		text_input.text = input_text
 		self.initial_input_text = input_text
 		ok_button.disabled = true
+	else:
+		ok_button.disabled = false
 	
 	self.visible = true
 

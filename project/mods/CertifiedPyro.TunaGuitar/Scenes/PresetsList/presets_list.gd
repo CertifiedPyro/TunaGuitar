@@ -196,7 +196,7 @@ func _handle_rename_preset_request(preset_name: String) -> void:
 func _handle_delete_preset_request(preset_name: String) -> void:
 	# Show confirmation dialog.
 	var dialog := $"%DeleteDialog" as CustomDialog
-	dialog.popup("Are you sure you want to overwrite this preset:\n" + preset_name)
+	dialog.popup("Are you sure you want to delete this preset:\n" + preset_name)
 	
 	# Wait for user to respond.
 	var dialog_result := yield(dialog, "responded") as Array

@@ -170,11 +170,11 @@ func _handle_rename_preset_request(preset_name: String) -> void:
 	# Wait for user to respond.
 	var dialog_result := yield(dialog, "responded") as Array
 	var confirmed := dialog_result[0] as bool
-	var new_preset_name := dialog_result[1] as String
 	if not confirmed:
 		return
 	
 	# Rename the preset.
+	var new_preset_name := dialog_result[1] as String
 	var saved_chords := presets_dict[preset_name] as Array
 	presets_dict.erase(preset_name)
 	presets_dict[new_preset_name] = saved_chords

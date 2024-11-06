@@ -7,4 +7,5 @@ bin/
 obj/
 
 manifestation.toml
+manifestation/
 thunderstore/GDWeave

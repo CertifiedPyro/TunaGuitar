@@ -65,6 +65,7 @@ func _on_exit_button_pressed() -> void:
 
 func _on_edit_text_changed(new_text: String) -> void:
 	save_button.disabled = new_text.empty()
+	presets_list._on_tree_nothing_selected()
 
 
 # Async function, caller must ALWAYS YIELD.
@@ -90,7 +91,6 @@ func _on_preset_selected(preset_name: String, saved_shapes: Array) -> void:
 
 
 func _on_preset_renamed(old_preset_name, new_preset_name) -> void:
-	print(old_preset_name + " " + new_preset_name + " " + last_activated_preset_name)
 	if last_activated_preset_name == old_preset_name:
 		last_activated_preset_name = new_preset_name
 

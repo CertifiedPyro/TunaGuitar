@@ -3,7 +3,6 @@ extends Control
 
 signal preset_activated(preset_name, saved_shapes)
 signal preset_selected(preset_name, saved_shapes)
-signal preset_deselected()
 signal preset_renamed(old_preset_name, new_preset_name)
 signal preset_deleted(preset_name)
 
@@ -19,8 +18,6 @@ var delete_texture: Texture
 
 # Map of preset name (string) to saved guitar shapes (array of arrays)
 var presets_dict: Dictionary
-var previous_selected_tree_item: TreeItem
-var is_previous_selected_tree_item_selected: bool = false
 
 onready var presets_tree := $"%PresetsTree" as Tree
 
@@ -72,7 +69,6 @@ func save_preset(preset_name: String, saved_shapes: Array) -> bool:
 				presets_tree.scroll_to_item(tree_item)
 				tree_item.select(0)
 				break
-			
 			tree_item = tree_item.get_next()
 		
 		# Show confirmation dialog.
@@ -95,7 +91,7 @@ func save_preset(preset_name: String, saved_shapes: Array) -> bool:
 	return true
 
 
-# Get the selected preset.
+# Emit a signal for the selected preset.
 func activate_preset() -> void:
 	var selected_item := presets_tree.get_selected()
 	var preset_name := selected_item.get_text(0)
@@ -105,35 +101,15 @@ func activate_preset() -> void:
 
 # Run when tree item is double-clicked.
 func _on_tree_item_activated() -> void:
-	var selected_item := presets_tree.get_selected()
-	
-	# Selected item can be null if an item was selected, then user double-clicks.
-	# In this case, select the item again.
-	if selected_item == null:
-		previous_selected_tree_item.select(0)
-		is_previous_selected_tree_item_selected = false
-		self._on_tree_item_selected()
-		return
-	
 	self.activate_preset()
 
 
 # Run when tree item is selected (only fires once on double-click).
 func _on_tree_item_selected() -> void:
 	var item := presets_tree.get_selected()
-	
-	if item == previous_selected_tree_item and is_previous_selected_tree_item_selected:
-		# Deselect item if it's already selected.
-		item.deselect(0)
-		is_previous_selected_tree_item_selected = false
-		emit_signal("preset_deselected")
-	else:
-		# Select the item.
-		var preset_name := item.get_text(0)
-		var preset_shapes := (presets_dict[preset_name] as Array).duplicate(true)
-		previous_selected_tree_item = item
-		is_previous_selected_tree_item_selected = true
-		emit_signal("preset_selected", preset_name, preset_shapes)
+	var preset_name := item.get_text(0)
+	var preset_shapes := (presets_dict[preset_name] as Array).duplicate(true)
+	emit_signal("preset_selected", preset_name, preset_shapes)
 
 
 # Run when no tree item is selected.
@@ -141,12 +117,9 @@ func _on_tree_nothing_selected() -> void:
 	var item := presets_tree.get_selected()
 	if item != null:
 		item.deselect(0)
-	
-	previous_selected_tree_item = item
-	is_previous_selected_tree_item_selected = false
-	emit_signal("preset_deselected")
 
 
+# Async function, caller must ALWAYS YIELD.
 # Run when the rename or delete buttons on a tree item are pressed.
 func _on_tree_button_pressed(item: TreeItem, column: int, id: int) -> void:
 	var preset_name = item.get_text(0)

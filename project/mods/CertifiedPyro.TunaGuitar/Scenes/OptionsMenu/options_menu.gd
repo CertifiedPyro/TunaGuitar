@@ -35,7 +35,7 @@ func apply_saved_keybinds() -> void:
 				var ek = InputEventKey.new()
 				ek.scancode = key_rebindings[remap_action]
 				button.queued_action = ek
-	get_tree().call_group("input_remap", "_remap_key")
+	get_tree().call_group("guitar_input_remap", "_remap_key")
 
 
 func open_menu() -> void:

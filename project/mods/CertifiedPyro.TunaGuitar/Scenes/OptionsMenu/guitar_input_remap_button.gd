@@ -10,8 +10,6 @@ var queued_action
 
 
 func _ready():
-#	OptionsMenu.connect("_rebinding_key", self, "_input_check")
-
 	default_action = InputMap.get_action_list(action)[0]
 
 	add_to_group("guitar_input_remap")
@@ -32,7 +30,6 @@ func _on_input_forward_toggled(button_pressed):
 	set_process_unhandled_key_input(button_pressed)
 	if button_pressed:
 		text = ". . ."
-#		OptionsMenu.emit_signal("_rebinding_key", action)
 	elif queued_action:
 		text = _get_text(queued_action)
 	else :
@@ -48,7 +45,6 @@ func _unhandled_key_input(event):
 	for i in range(1, 10):
 		var chord_shape_action_name := "bind_" + str(i)
 		if InputMap.action_has_event(chord_shape_action_name, event):
-			print("Detected key press as chord shape button, ignoring...")
 			get_tree().set_input_as_handled()
 			queued_action = null
 			pressed = false
@@ -91,11 +87,7 @@ func _remap_key():
 		event = set_action
 	
 	var events_to_add = []
-	print(default_action.as_text() + " " + (queued_action.as_text() if queued_action != null else "null") + " " + (set_action.as_text() if set_action != null else "null"))
-	
-	
 	events_to_add.append(event)
-	
 	
 	if events_to_add.size() > 0:
 		InputMap.action_erase_events(action)

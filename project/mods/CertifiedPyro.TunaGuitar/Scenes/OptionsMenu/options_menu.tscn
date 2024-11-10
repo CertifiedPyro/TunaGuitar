@@ -232,4 +232,5 @@ __meta__ = {
 [connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_4/guitar_string_4" to="Panel/ScrollContainer/VBoxContainer/input_string_4/guitar_string_4" method="_on_input_forward_toggled"]
 [connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_5/guitar_string_5" to="Panel/ScrollContainer/VBoxContainer/input_string_5/guitar_string_5" method="_on_input_forward_toggled"]
 [connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_6/guitar_string_6" to="Panel/ScrollContainer/VBoxContainer/input_string_6/guitar_string_6" method="_on_input_forward_toggled"]
+[connection signal="pressed" from="Panel/HBoxContainer/reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/apply" to="." method="_on_apply_pressed"]

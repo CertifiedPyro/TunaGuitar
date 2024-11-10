@@ -6,7 +6,7 @@ func _ready():
 
 	default_action = InputMap.get_action_list(action)[0]
 
-	add_to_group("input_remap")
+	add_to_group("guitar_input_remap")
 	set_process_unhandled_key_input(false)
 	_display_key()
 

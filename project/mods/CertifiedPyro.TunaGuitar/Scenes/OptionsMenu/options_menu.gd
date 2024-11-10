@@ -29,8 +29,10 @@ func apply_saved_keybinds() -> void:
 		return
 	
 	var nodes := get_tree().get_nodes_in_group("guitar_input_remap")
-	for remap_action in key_rebindings:
-		for button in nodes:
+	for button in nodes:
+		# Clear queued action, so it doesn't override current keybind.
+		button.queued_action = null
+		for remap_action in key_rebindings:
 			if button.action == remap_action:
 				var ek = InputEventKey.new()
 				ek.scancode = key_rebindings[remap_action]
@@ -41,7 +43,6 @@ func apply_saved_keybinds() -> void:
 func open_menu() -> void:
 	# Reload keybinds from file.
 	self.apply_saved_keybinds()
-	
 	self.visible = true
 	self._enter_menu_state()
 
@@ -64,7 +65,7 @@ func _on_apply_pressed() -> void:
 		return false
 	
 	PlayerData._send_notification("Saved keybinds to file!")
-#	self._on_exit_button_pressed()
+	self._on_exit_button_pressed()
 
 
 func _on_reset_pressed() -> void:

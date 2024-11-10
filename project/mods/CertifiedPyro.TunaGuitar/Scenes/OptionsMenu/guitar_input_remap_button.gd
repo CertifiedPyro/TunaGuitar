@@ -53,9 +53,11 @@ func _unhandled_key_input(event):
 	# Only check conflicts with guitar keybinds, rather than all global keybinds.
 	for button in get_tree().get_nodes_in_group("guitar_input_remap"):
 		if button != self:
-			var valid = true
-			if button.set_action and button.set_action.scancode == event.scancode: valid = false
-			if button.queued_action and button.queued_action.scancode == event.scancode: valid = false
+			var valid := true
+			if button.set_action and button.set_action.scancode == event.scancode:
+				valid = false
+			if button.queued_action and button.queued_action.scancode == event.scancode:
+				valid = false
 			if not valid:
 				if button.default_action.scancode != event.scancode:
 					button.queued_action = button.default_action
@@ -65,7 +67,6 @@ func _unhandled_key_input(event):
 				button._on_input_forward_toggled(false)
 	
 	queued_action = event
-	
 	pressed = false
 
 

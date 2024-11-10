@@ -41,6 +41,15 @@ size_flags_horizontal = 3
 theme = ExtResource( 2 )
 text = "Save As..."
 
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+margin_top = 126.0
+margin_right = 230.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+text = "Settings"
+
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SaveAsButton" to="." method="_on_save_as_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

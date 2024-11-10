@@ -1,0 +1,236 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Themes/main.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Themes/panel_med.tres" type="StyleBox" id=2]
+[ext_resource path="res://mods/CertifiedPyro.TunaGuitar/Scenes/OptionsMenu/options_menu.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Menus/Main Menu/ui_generic_button.gd" type="Script" id=5]
+[ext_resource path="res://mods/CertifiedPyro.TunaGuitar/Scenes/OptionsMenu/guitar_input_remap_button.gd" type="Script" id=6]
+
+[node name="TunaGuitarOptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_styles/panel = ExtResource( 2 )
+
+[node name="close" type="Button" parent="Panel"]
+anchor_left = 0.898438
+anchor_top = -0.0493827
+anchor_right = 1.03507
+anchor_bottom = 0.0319382
+margin_right = 0.0640259
+margin_bottom = 0.30402
+rect_pivot_offset = Vector2( 243, 71 )
+text = "Close"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 0.964
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+margin_right = 744.0
+margin_bottom = 599.232
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="input_string_1" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/input_string_1"]
+margin_right = 548.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Guitar String 1:"
+
+[node name="guitar_string_1" type="Button" parent="Panel/ScrollContainer/VBoxContainer/input_string_1" groups=["guitar_input_remap"]]
+margin_left = 552.0
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+toggle_mode = true
+script = ExtResource( 6 )
+action = "guitar_string_1"
+
+[node name="input_string_2" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 38.0
+margin_right = 744.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/input_string_2"]
+margin_right = 548.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Guitar String 2:"
+
+[node name="guitar_string_2" type="Button" parent="Panel/ScrollContainer/VBoxContainer/input_string_2" groups=["guitar_input_remap"]]
+margin_left = 552.0
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+toggle_mode = true
+script = ExtResource( 6 )
+action = "guitar_string_2"
+
+[node name="input_string_3" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 744.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/input_string_3"]
+margin_right = 548.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Guitar String 3:"
+
+[node name="guitar_string_3" type="Button" parent="Panel/ScrollContainer/VBoxContainer/input_string_3" groups=["guitar_input_remap"]]
+margin_left = 552.0
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+toggle_mode = true
+script = ExtResource( 6 )
+action = "guitar_string_3"
+
+[node name="input_string_4" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 744.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/input_string_4"]
+margin_right = 548.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Guitar String 4:"
+
+[node name="guitar_string_4" type="Button" parent="Panel/ScrollContainer/VBoxContainer/input_string_4" groups=["guitar_input_remap"]]
+margin_left = 552.0
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+toggle_mode = true
+script = ExtResource( 6 )
+action = "guitar_string_4"
+
+[node name="input_string_5" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 152.0
+margin_right = 744.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/input_string_5"]
+margin_right = 548.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Guitar String 5:"
+
+[node name="guitar_string_5" type="Button" parent="Panel/ScrollContainer/VBoxContainer/input_string_5" groups=["guitar_input_remap"]]
+margin_left = 552.0
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+toggle_mode = true
+script = ExtResource( 6 )
+action = "guitar_string_5"
+
+[node name="input_string_6" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 190.0
+margin_right = 744.0
+margin_bottom = 224.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/input_string_6"]
+margin_right = 548.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Guitar String 6:"
+
+[node name="guitar_string_6" type="Button" parent="Panel/ScrollContainer/VBoxContainer/input_string_6" groups=["guitar_input_remap"]]
+margin_left = 552.0
+margin_right = 744.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+toggle_mode = true
+script = ExtResource( 6 )
+action = "guitar_string_6"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_left = 0.307292
+anchor_top = 0.927469
+anchor_right = 1.03117
+anchor_bottom = 1.0404
+margin_right = 0.0639992
+margin_bottom = -0.176003
+custom_constants/separation = 13
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="reset" type="Button" parent="Panel/HBoxContainer"]
+margin_right = 229.0
+margin_bottom = 77.0
+rect_pivot_offset = Vector2( 243, 71 )
+size_flags_horizontal = 3
+text = "Reset To Default"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="apply" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 242.0
+margin_right = 584.0
+margin_bottom = 77.0
+rect_pivot_offset = Vector2( 243, 71 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.49
+text = "Confirm and Apply Changes"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="Panel/close" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_1/guitar_string_1" to="Panel/ScrollContainer/VBoxContainer/input_string_1/guitar_string_1" method="_on_input_forward_toggled"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_2/guitar_string_2" to="Panel/ScrollContainer/VBoxContainer/input_string_2/guitar_string_2" method="_on_input_forward_toggled"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_3/guitar_string_3" to="Panel/ScrollContainer/VBoxContainer/input_string_3/guitar_string_3" method="_on_input_forward_toggled"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_4/guitar_string_4" to="Panel/ScrollContainer/VBoxContainer/input_string_4/guitar_string_4" method="_on_input_forward_toggled"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_5/guitar_string_5" to="Panel/ScrollContainer/VBoxContainer/input_string_5/guitar_string_5" method="_on_input_forward_toggled"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/input_string_6/guitar_string_6" to="Panel/ScrollContainer/VBoxContainer/input_string_6/guitar_string_6" method="_on_input_forward_toggled"]
+[connection signal="pressed" from="Panel/HBoxContainer/reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/apply" to="." method="_on_apply_pressed"]

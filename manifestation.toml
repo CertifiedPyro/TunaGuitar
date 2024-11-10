@@ -1,0 +1,17 @@
+id = "CertifiedPyro.TunaGuitar"
+name = "TunaGuitar"
+description = "QOL for guitars, like named chord presets!"
+version = "0.2.0"
+homepage = "https://github.com/CertifiedPyro/TunaGuitar"
+author = "CertifiedPyro"
+
+icon = "./thunderstore/icon.png"
+readme = "./thunderstore/README.md"
+changelog = "./thunderstore/CHANGELOG.md"
+
+# both are optional here, pick what you want
+[project]
+godot = "./project/project.godot"
+
+[[dependencies]]
+thunderstore_version = "NotNet-GDWeave-2.0.12"

@@ -16,7 +16,7 @@ const FILE_PATH: String = "user://tunaguitar.json"
 var rename_texture: Texture
 var delete_texture: Texture
 
-# Map of preset name (string) to saved guitar shapes (array of arrays)
+# Map of preset name (string) to saved guitar shapes (array of pages of guitar shapes)
 var presets_dict: Dictionary
 
 onready var presets_tree := $"%PresetsTree" as Tree
@@ -150,9 +150,9 @@ func _handle_rename_preset_request(preset_name: String) -> void:
 	
 	# Rename the preset.
 	var new_preset_name := dialog_result[1] as String
-	var saved_chords := presets_dict[preset_name] as Array
+	var saved_shapes := presets_dict[preset_name] as Array
 	presets_dict.erase(preset_name)
-	presets_dict[new_preset_name] = saved_chords
+	presets_dict[new_preset_name] = saved_shapes
 	
 	# Write presets to file.
 	var write_success = _write_presets_to_file()
@@ -209,6 +209,14 @@ func _read_presets_from_file() -> bool:
 		pass
 	
 	presets_dict = json_parse_result.result as Dictionary
+	
+	# Handle case where we have save from <1.11, convert to new format with guitar pages.
+	for preset_name in presets_dict:
+		if not presets_dict[preset_name][0][0] is Array:
+			presets_dict[preset_name] = [presets_dict[preset_name].duplicate(true)]
+			for i in 5:
+				presets_dict[preset_name].append([[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]])
+	
 	return true
 
 

@@ -47,6 +47,7 @@ func _on_load_button_pressed() -> void:
 # Run when tree item is double-clicked.
 func _on_preset_activated(preset_name: String, saved_shapes: Array) -> void:
 	guitar.saved_shapes = saved_shapes.duplicate(true)
+	guitar._select_shape_page(guitar.selected_shape_page)
 	guitar._select_shape(guitar.selected_shape)
 	
 	PlayerData._send_notification("Loaded preset from file!")

@@ -1,3 +1,8 @@
+## 0.2.1
+### Fixed
+- Update mod to be compatible with new guitar chord pages in Webfishing v1.11.
+
+
 ## 0.2.0
 
 ### Added
